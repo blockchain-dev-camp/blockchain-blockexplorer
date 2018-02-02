@@ -9,6 +9,7 @@
 namespace BlockExplorer\Http;
 
 
+use BlockExplorer\DTO\BlockDTO;
 use BlockExplorer\Services\BlockServiceInterface;
 use Core\TemplateInterface;
 
@@ -26,10 +27,28 @@ class BlockHttpHandler extends HttpHandlerAbstract
         $this->blockService = $blockService;
     }
 
-    public function getAllBlocks()
+    public function getBlockData(array $getRequest): void
+    {
+       if (isset($getRequest['id'])) {
+
+           $this->viewBlock(intval(htmlspecialchars($getRequest['id'])));
+
+       } else {
+           $this->viewAllBlocks();
+       }
+    }
+
+
+    private function viewAllBlocks(): void
     {
         $blocks = $this->blockService->getBlocksData();
         $this->render("blocks/all", $blocks);
+    }
+
+    private function viewBlock(int $index): void
+    {
+        $block = $this->blockService->getBlockByIndex($index);
+        $this->render('blocks/view', $block);
     }
 
 }

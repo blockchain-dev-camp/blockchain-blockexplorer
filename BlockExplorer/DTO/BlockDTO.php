@@ -24,7 +24,13 @@ class BlockDTO
     {
         foreach($data as $key => $val) {
             if(property_exists(__CLASS__,$key)) {
-                $this->$key = $val;
+              if ($key === "transactions"){
+                 foreach ($val as $transaction){
+                     $this->transactions[] = new TransactionDTO($transaction);
+                 }
+              } else {
+                  $this->$key = $val;
+              }
             }
         }
     }

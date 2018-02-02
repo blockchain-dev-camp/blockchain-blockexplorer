@@ -16,10 +16,10 @@ use BlockExplorer\DTO\BlockDTO;
     </thead>
     <tbody>
    <?php foreach ($data as $block): ?>
-       <tr>
-           <td><?=$block->getIndex()?></td>
+       <tr align="center">
+           <td><a href="./blocks.php?id=<?=$block->getIndex()?>"><?=$block->getIndex()?></a></td>
            <td><?=$block->getMinedBy()?></td>
-           <td><?=$block->getTransactionsCount()?></td>
+           <td><a href="./transactions.php?blockId=<?=$block->getIndex()?>"><?=$block->getTransactionsCount()?></a> txs</td>
            <td><?=$block->getDateCreated()?></td>
            <td><?=$block->getBlockHash()?></td>
        </tr>

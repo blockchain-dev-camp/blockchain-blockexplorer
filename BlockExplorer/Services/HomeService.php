@@ -12,16 +12,11 @@ namespace BlockExplorer\Services;
 use BlockExplorer\DTO\ServerInfoDTO;
 use Core\DataGathererInterface;
 
-class HomeService implements HomeServiceInterface
+class HomeService extends ServiceAbstract implements HomeServiceInterface
 {
-    /**
-     * @var DataGathererInterface $dataGatherer
-     */
-    private $dataGatherer;
-
     public function __construct(DataGathererInterface $dataGatherer)
     {
-        $this->dataGatherer = $dataGatherer;
+        parent::__construct($dataGatherer);
     }
 
     public function getServerInfo()

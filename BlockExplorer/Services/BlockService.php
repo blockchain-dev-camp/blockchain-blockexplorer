@@ -12,17 +12,13 @@ namespace BlockExplorer\Services;
 use BlockExplorer\DTO\BlockDTO;
 use Core\DataGathererInterface;
 
-class BlockService implements BlockServiceInterface
+class BlockService extends ServiceAbstract implements BlockServiceInterface
 {
-    /**
-     * @var DataGathererInterface $dataGatherer
-     */
-    private $dataGatherer;
-
     public function __construct(DataGathererInterface $dataGatherer)
     {
-        $this->dataGatherer = $dataGatherer;
+        parent::__construct($dataGatherer);
     }
+
     public function getBlocksData(): array
     {
         $rawData = $this->dataGatherer->getRawData("/blocks");
@@ -32,5 +28,12 @@ class BlockService implements BlockServiceInterface
             $blocksArray[] = new BlockDTO($value);
         }
         return $blocksArray;
+    }
+
+    public function getBlockByIndex(int $index): BlockDTO
+    {
+       $rawData = $this->dataGatherer->getRawData('/blocks/' . $index);
+       $block = new BlockDTO(json_decode($rawData));
+       return $block;
     }
 }

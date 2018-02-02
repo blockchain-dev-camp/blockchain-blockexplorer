@@ -9,5 +9,5 @@
 require_once ('autoload.php');
 $template = new \Core\Template();
 $blockService = new \BlockExplorer\Services\BlockService($dataGatherer);
-$homeHandler = new \BlockExplorer\Http\BlockHttpHandler($template, $blockService);
-$homeHandler->getAllBlocks();
+$blockHaandler = new \BlockExplorer\Http\BlockHttpHandler($template, $blockService);
+$blockHaandler->getBlockData($_GET);
