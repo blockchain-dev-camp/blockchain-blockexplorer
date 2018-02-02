@@ -9,33 +9,30 @@
 namespace BlockExplorer\Http;
 
 
-use BlockExplorer\Services\DataGatherServiceInterface;
+
+use BlockExplorer\Services\HomeServiceInterface;
 use Core\TemplateInterface;
 
 class HomeHttpHandler extends HttpHandlerAbstract
 {
     /**
-     * @var DataGatherServiceInterface
+     * @var HomeServiceInterface
      */
-    private $dataGatherService;
+    private $homeService;
 
     public function __construct(TemplateInterface $template,
-                                DataGatherServiceInterface $dataGatherService)
+                                HomeServiceInterface $homeService)
     {
         parent::__construct($template);
-        $this->dataGatherService = $dataGatherService;
+        $this->homeService = $homeService;
     }
 
     public function index()
     {
-        $serverInfo = $this->dataGatherService->getServerInfo();
+        $serverInfo = $this->homeService->getServerInfo();
         $this->render("home/serverInfo", $serverInfo);
     }
 
-    public function getAllBlocks()
-    {
-        $blocks = $this->dataGatherService->getBlocksData();
-        $this->render("blocks/all", $blocks);
-    }
+
 
 }

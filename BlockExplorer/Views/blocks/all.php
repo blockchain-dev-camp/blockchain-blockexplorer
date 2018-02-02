@@ -8,6 +8,7 @@ use BlockExplorer\DTO\BlockDTO;
     <thead>
     <tr>
         <th>Index</th>
+        <th>Mined By</th>
         <th>Transactions Count</th>
         <th>Created Date</th>
         <th>Block Hash</th>
@@ -17,6 +18,7 @@ use BlockExplorer\DTO\BlockDTO;
    <?php foreach ($data as $block): ?>
        <tr>
            <td><?=$block->getIndex()?></td>
+           <td><?=$block->getMinedBy()?></td>
            <td><?=$block->getTransactionsCount()?></td>
            <td><?=$block->getDateCreated()?></td>
            <td><?=$block->getBlockHash()?></td>

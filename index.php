@@ -1,6 +1,5 @@
 <?php
 require_once ('autoload.php');
-$template = new \Core\Template();
-$dataGatherService = new \BlockExplorer\Services\DataGatherService();
-$homeHandler = new \BlockExplorer\Http\HomeHttpHandler($template, $dataGatherService);
+$homeService = new \BlockExplorer\Services\HomeService($dataGatherer);
+$homeHandler = new \BlockExplorer\Http\HomeHttpHandler($template, $homeService);
 $homeHandler->index();

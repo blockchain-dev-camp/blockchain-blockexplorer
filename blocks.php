@@ -8,6 +8,6 @@
 
 require_once ('autoload.php');
 $template = new \Core\Template();
-$dataGatherService = new \BlockExplorer\Services\DataGatherService();
-$homeHandler = new \BlockExplorer\Http\HomeHttpHandler($template, $dataGatherService);
+$blockService = new \BlockExplorer\Services\BlockService($dataGatherer);
+$homeHandler = new \BlockExplorer\Http\BlockHttpHandler($template, $blockService);
 $homeHandler->getAllBlocks();
