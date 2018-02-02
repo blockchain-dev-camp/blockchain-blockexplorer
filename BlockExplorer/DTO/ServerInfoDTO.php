@@ -19,10 +19,9 @@ class ServerInfoDTO
     private $addresses;
     private $coins;
 
-    public function __construct(string $data)
+    public function __construct(object $data)
     {
-        $jsonArray = json_decode($data);
-        foreach($jsonArray as $key => $val) {
+        foreach($data as $key => $val) {
             if(property_exists(__CLASS__,$key)) {
                 $this->$key = $val;
             }

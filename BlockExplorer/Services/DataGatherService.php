@@ -9,16 +9,37 @@
 namespace BlockExplorer\Services;
 
 
+use BlockExplorer\DTO\BlockDTO;
 use BlockExplorer\DTO\ServerInfoDTO;
 
 class DataGatherService implements DataGatherServiceInterface
 {
     const API_SERVER_URL = "http://localhost:5555";
 
-    public function getServerInfo()
+    public function getServerInfo(): ServerInfoDTO
     {
-        $serverInfo = file_get_contents(self::API_SERVER_URL . "/info");
+        $rawData = $this->getRawData("/info");
+        $serverInfo = $jsonArray = json_decode($rawData);
         $serverInfoDTO = new ServerInfoDTO($serverInfo);
         return $serverInfoDTO;
+    }
+
+
+    public function getBlocksData(): array
+    {
+       $rawData = $this->getRawData("/blocks");
+       $blocksDataArray = json_decode($rawData);
+       $blocksArray = [];
+       foreach($blocksDataArray as $value){
+           $blocksArray[] = new BlockDTO($value);
+       }
+        return $blocksArray;
+    }
+
+
+    private function getRawData(string $urlPath): string
+    {
+        $rawData = file_get_contents(self::API_SERVER_URL . $urlPath);
+        return $rawData;
     }
 }

@@ -31,4 +31,11 @@ class HomeHttpHandler extends HttpHandlerAbstract
         $serverInfo = $this->dataGatherService->getServerInfo();
         $this->render("home/serverInfo", $serverInfo);
     }
+
+    public function getAllBlocks()
+    {
+        $blocks = $this->dataGatherService->getBlocksData();
+        $this->render("blocks/all", $blocks);
+    }
+
 }

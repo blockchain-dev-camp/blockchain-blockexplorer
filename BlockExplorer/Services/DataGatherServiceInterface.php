@@ -12,5 +12,6 @@ namespace BlockExplorer\Services;
 interface DataGatherServiceInterface
 {
     public function getServerInfo();
+    public function getBlocksData();
 
 }
