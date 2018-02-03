@@ -35,7 +35,7 @@ class TransactionHttpHandler extends HttpHandlerAbstract
 
             $this->showTransactionByHash(htmlspecialchars($getRequest['transHash']));
         } else {
-            //TODO: TROW AN ERROR.
+            $this->render("transactions/search");
         }
     }
 

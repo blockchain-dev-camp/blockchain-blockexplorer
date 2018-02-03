@@ -1,5 +1,5 @@
 <?php /** @var \BlockExplorer\DTO\ServerInfoDTO $data */ ?>
-<table border="1">
+<table align="center" border="1">
     <tr>
         <th>About</th>
         <td><?=$data->getAbout()?></td>

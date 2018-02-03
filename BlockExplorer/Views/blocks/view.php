@@ -7,7 +7,7 @@
         </tr>
         <tr>
             <th>Transactions Count</th>
-            <td><?=$data->getTransactionsCount()?> txs</td>
+            <td><a href="./transactions.php?blockId=<?=$data->getIndex()?>"><?=$data->getTransactionsCount()?></a> txs</td>
         </tr>
         <tr>
             <th>Previous Block Hash</th>

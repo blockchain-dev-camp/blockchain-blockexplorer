@@ -11,7 +11,13 @@ class Template implements TemplateInterface
     public function render(string $templateName, $data = null, array $errors = [])
     {
         require_once self::TEMPLATES_FOLDER
+            . "header"
+            . self::TEMPLATES_EXTENSION;
+        require_once self::TEMPLATES_FOLDER
             . $templateName
+            . self::TEMPLATES_EXTENSION;
+        require_once self::TEMPLATES_FOLDER
+            . "footer"
             . self::TEMPLATES_EXTENSION;
     }
 }
