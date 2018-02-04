@@ -19,9 +19,12 @@ class BlockService extends ServiceAbstract implements BlockServiceInterface
         parent::__construct($dataGatherer);
     }
 
-    public function getBlocksData(): array
+    public function getBlocksData(): ?array
     {
         $rawData = $this->dataGatherer->getRawData("/blocks");
+        if (null === $rawData){
+            return null;
+        }
         $blocksDataArray = json_decode($rawData);
         $blocksArray = [];
         foreach($blocksDataArray as $value){
@@ -30,9 +33,12 @@ class BlockService extends ServiceAbstract implements BlockServiceInterface
         return $blocksArray;
     }
 
-    public function getBlockByIndex(int $index): BlockDTO
+    public function getBlockByIndex(int $index): ?BlockDTO
     {
        $rawData = $this->dataGatherer->getRawData('/blocks/' . $index);
+        if (null === $rawData){
+            return null;
+        }
        $block = new BlockDTO(json_decode($rawData));
        return $block;
     }

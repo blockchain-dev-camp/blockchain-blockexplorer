@@ -6,8 +6,10 @@
  * Time: 19:53
  */
 namespace BlockExplorer\Services;
+use BlockExplorer\DTO\ServerInfoDTO;
+
 interface HomeServiceInterface
 {
 
-    public function getServerInfo();
+    public function getServerInfo(): ?ServerInfoDTO;
 }

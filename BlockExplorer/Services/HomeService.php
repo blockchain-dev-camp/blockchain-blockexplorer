@@ -19,9 +19,12 @@ class HomeService extends ServiceAbstract implements HomeServiceInterface
         parent::__construct($dataGatherer);
     }
 
-    public function getServerInfo()
+    public function getServerInfo(): ?ServerInfoDTO
     {
         $rawData = $this->dataGatherer->getRawData("/info");
+        if (null === $rawData){
+            return null;
+        }
         $serverInfo = $jsonArray = json_decode($rawData);
         $serverInfoDTO = new ServerInfoDTO($serverInfo);
         return $serverInfoDTO;

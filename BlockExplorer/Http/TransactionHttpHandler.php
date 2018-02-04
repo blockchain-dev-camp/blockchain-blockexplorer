@@ -42,12 +42,23 @@ class TransactionHttpHandler extends HttpHandlerAbstract
     private function showAllByBlockId(int $index): void
     {
         $block = $this->transactionService->viewAllInBlockIndex($index);
-        $this->render("transactions/view_all", $block);
+
+        if (null === $block) {
+            $error = "There isn't a block with " . $index . " index. Please try again.";
+            $this->render("transactions/error", $error);
+        } else {
+             $this->render("transactions/view_all", $block);
+        }
     }
 
     private function showTransactionByHash(string $transHash): void
     {
         $transaction = $this->transactionService->viewSingleTransactionByHash($transHash);
-        $this->render("transactions/view_one", $transaction);
+        if (null === $transaction) {
+            $error = "We have no data for transactions with this " . $transHash . " hash.Please try again.";
+            $this->render("transactions/error", $error);
+        } else {
+            $this->render("transactions/view_one", $transaction);
+        }
     }
 }

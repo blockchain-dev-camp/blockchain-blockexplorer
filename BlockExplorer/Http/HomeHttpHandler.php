@@ -30,9 +30,13 @@ class HomeHttpHandler extends HttpHandlerAbstract
     public function index()
     {
         $serverInfo = $this->homeService->getServerInfo();
-        $this->render("home/serverInfo", $serverInfo);
+        if (null === $serverInfo) {
+            $error = "The Node server is currently offline. Please check again later.";
+            $this->render("errors/error", $error);
+        } else {
+            $this->render("home/serverInfo", $serverInfo);
+        }
+
     }
-
-
 
 }

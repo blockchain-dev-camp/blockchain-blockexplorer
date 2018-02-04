@@ -14,7 +14,7 @@ use BlockExplorer\DTO\TransactionDTO;
 
 interface TransactionServiceInterface
 {
-    public function viewAllInBlockIndex(int $index): BlockDTO;
+    public function viewAllInBlockIndex(int $index): ?BlockDTO;
 
-    public function viewSingleTransactionByHash(string $transHash): TransactionDTO;
+    public function viewSingleTransactionByHash(string $transHash): ?TransactionDTO;
 }

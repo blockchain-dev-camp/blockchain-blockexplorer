@@ -21,11 +21,11 @@ class DataGatherer implements DataGathererInterface
      * @param string $urlPath
      * @return string
      */
-    public function getRawData(string $urlPath): string
+    public function getRawData(string $urlPath): ?string
     {
         $rawData = @file_get_contents(self::API_SERVER_URL . $urlPath);
         if ($rawData === false){
-            throw new \Exception("incorrect Data given! Try again!");
+           return null;
         }
         return $rawData;
     }

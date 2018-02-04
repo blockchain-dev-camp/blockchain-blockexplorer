@@ -14,8 +14,8 @@ use BlockExplorer\DTO\BlockDTO;
 interface BlockServiceInterface
 {
 
-    public function getBlocksData(): array;
+    public function getBlocksData(): ?array;
 
-    public function getBlockByIndex(int $index): BlockDTO;
+    public function getBlockByIndex(int $index): ?BlockDTO;
 
 }

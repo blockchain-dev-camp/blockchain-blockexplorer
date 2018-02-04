@@ -21,16 +21,22 @@ class TransactionService extends ServiceAbstract implements TransactionServiceIn
         parent::__construct($dataGatherer);
     }
 
-    public function viewAllInBlockIndex(int $index): BlockDTO
+    public function viewAllInBlockIndex(int $index): ?BlockDTO
     {
         $rawData = $this->dataGatherer->getRawData("/blocks/" . $index);
+        if (null === $rawData){
+            return null;
+        }
         $block = new BlockDTO(json_decode($rawData));
         return $block;
     }
 
-    public function viewSingleTransactionByHash(string $transHash): TransactionDTO
+    public function viewSingleTransactionByHash(string $transHash): ?TransactionDTO
     {
         $rawData = $this->dataGatherer->getRawData("/transaction/" . $transHash . "info");
+        if (null === $rawData){
+            return null;
+        }
         $transactionDTO = new TransactionDTO(json_decode($rawData));
         return $transactionDTO;
     }
