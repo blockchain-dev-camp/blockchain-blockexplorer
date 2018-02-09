@@ -14,7 +14,7 @@ use BlockExplorer\DTO\ServerInfoDTO;
 
 class DataGatherer implements DataGathererInterface
 {
-    const API_SERVER_URL = "http://localhost:5555";
+    const API_SERVER_URL = "http://178.75.234.192:5555";
 
     /**
      * Takes an URL path that is added to the main host and extracts the raw json data.
