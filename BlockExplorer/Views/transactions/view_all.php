@@ -4,7 +4,7 @@
  * @var \BlockExplorer\DTO\TransactionDTO $transaction
  */ ?>
 <div style="text-align: center"><h1>All Transactions in Block <?=$data->getIndex()?></h1>
-    <table align="center" border="1">
+    <table class="table-bordered table" align="center">
         <thead>
         <tr>
             <th>From</th>

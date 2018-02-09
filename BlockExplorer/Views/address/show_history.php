@@ -8,7 +8,7 @@
  * @var \BlockExplorer\DTO\TransactionDTO $transaction*/?>
 <div style="text-align: center"><h1>Transactions History of Address <?=$data->getAddressHash()?>
     <br/>The Address has <?=$data->getBalance()?></h1>
-<table align="center" border="1">
+<table class="table-bordered table" align="center">
     <thead>
     <tr>
         <th>From</th>
@@ -21,11 +21,11 @@
     </thead>
     <tbody>
     <?php foreach ($data->getTransactionsHistory() as $transaction): ?>
-        <tr>
-            <td><?=$transaction->getFrom()?></td>
-            <td><?=$transaction->getTo()?></td>
+        <tr style="color: snow; background-color: <?= $transaction->isReceiver() ? "green" : "red" ?> ">
+            <td><a style="color: snow" href="./history.php?hash=<?=$transaction->getFrom()?>"><?=$transaction->getFrom()?></a></td>
+            <td><a style="color: snow" href="./history.php?hash=<?=$transaction->getTo()?>"><?=$transaction->getTo()?></a></td>
             <td><?=$transaction->getValue()?></td>
-            <td><a href="./transactions.php?transHash=<?=$transaction->getTransactionHash()?>"><?=$transaction->getTransactionHash()?></a></td>
+            <td><a style="color: snow" href="./transactions.php?transHash=<?=$transaction->getTransactionHash()?>"><?=$transaction->getTransactionHash()?></a></td>
             <td><?=$transaction->getFormatteddateReceived()?></td>
             <td><?=$transaction->getPaidStatus()?></td>
         </tr>
@@ -33,3 +33,7 @@
     </tbody>
 </table>
 </div>
+
+
+
+

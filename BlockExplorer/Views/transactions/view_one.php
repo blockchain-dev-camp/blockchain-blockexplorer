@@ -5,7 +5,7 @@
  * Time: 21:13
  */ /** @var \BlockExplorer\DTO\TransactionDTO $data */?>
 <div style="text-align: center"><h1>Details for Transactions With Hash <?=$data->getTransactionHash()?></h1>
-    <table align="center" border="1">
+    <table class="table-bordered table" align="center">
         <tr>
             <th>From</th>
             <td><?=$data->getFrom()?></td>

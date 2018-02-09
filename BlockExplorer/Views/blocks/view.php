@@ -1,6 +1,6 @@
 <?php /** @var \BlockExplorer\DTO\BlockDTO $data */ ?>
 <div style="text-align: center"><h1>Details for Block <?=$data->getIndex()?></h1>
-    <table align="center" border="1">
+    <table class="table-bordered table" align="center">
         <tr>
             <th>Index</th>
             <td><?=$data->getIndex()?></td>
