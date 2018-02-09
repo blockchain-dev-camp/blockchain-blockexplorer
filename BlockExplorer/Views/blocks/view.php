@@ -23,7 +23,7 @@
         </tr>
         <tr>
             <th>Creation Date</th>
-            <td><?=$data->getDateCreated()?></td>
+            <td><?=$data->getFormattedDateCreated()?></td>
         </tr>
     </table>
 </div>

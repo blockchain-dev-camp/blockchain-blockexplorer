@@ -24,11 +24,11 @@
         </tr>
         <tr>
             <th>Creation Date</th>
-            <td><?=$data->getDateReceived()?></td>
+            <td><?=$data->getFormatteddateReceived()?></td>
         </tr>
         <tr>
             <th>Paid Status</th>
-            <td><?=$data->getPaid()?></td>
+            <td><?=$data->getPaidStatus()?></td>
         </tr>
     </table>
 </div>

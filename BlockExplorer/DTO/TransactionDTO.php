@@ -20,6 +20,7 @@ class TransactionDTO
     private $paid;
     private $dateReceived;
     private $minedInBlockIndex;
+    private $isReceiver = false;
 
 
     public function __construct(object $data)
@@ -31,6 +32,28 @@ class TransactionDTO
         }
     }
 
+    public function getPaidStatus(): string
+    {
+        if ($this->getPaid()){
+            return "Successful";
+        } else {
+            return "Failed";
+        }
+    }
+
+    public function setIsReceiver()
+    {
+        $this->isReceiver = true;
+    }
+    public function isReceiver()
+    {
+        return $this->isReceiver;
+    }
+    public function getFormattedDateReceived()
+    {
+        $date = strtotime($this->getDateReceived());
+        return date('d/m/Y H:i:s', $date);
+    }
     /**
      * @return mixed
      */

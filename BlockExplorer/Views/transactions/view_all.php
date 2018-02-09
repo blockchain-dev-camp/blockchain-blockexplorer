@@ -22,8 +22,8 @@
                 <td><?=$transaction->getTo()?></td>
                 <td><?=$transaction->getValue()?></td>
                 <td><a href="./transactions.php?transHash=<?=$transaction->getTransactionHash()?>"><?=$transaction->getTransactionHash()?></a></td>
-                <td><?=$transaction->getDateReceived()?></td>
-                <td><?=$transaction->getPaid()?></td>
+                <td><?=$transaction->getFormatteddateReceived()?></td>
+                <td><?=$transaction->getPaidStatus()?></td>
             </tr>
         <?php endforeach; ?>
         </tbody>

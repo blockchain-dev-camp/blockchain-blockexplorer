@@ -7,7 +7,6 @@
  */
 
 require_once ('autoload.php');
-$template = new \Core\Template();
 $blockService = new \BlockExplorer\Services\BlockService($dataGatherer);
-$blockHaandler = new \BlockExplorer\Http\BlockHttpHandler($template, $blockService);
-$blockHaandler->getBlockData($_GET);
+$blockHandler = new \BlockExplorer\Http\BlockHttpHandler($template, $blockService);
+$blockHandler->getBlockData($_GET);

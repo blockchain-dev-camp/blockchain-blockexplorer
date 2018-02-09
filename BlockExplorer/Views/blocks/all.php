@@ -20,7 +20,7 @@ use BlockExplorer\DTO\BlockDTO;
            <td><a href="./blocks.php?id=<?=$block->getIndex()?>"><?=$block->getIndex()?></a></td>
            <td><?=$block->getMinedBy()?></td>
            <td><a href="./transactions.php?blockId=<?=$block->getIndex()?>"><?=$block->getTransactionsCount()?></a> txs</td>
-           <td><?=$block->getDateCreated()?></td>
+           <td><?=$block->getFormattedDateCreated()?></td>
            <td><?=$block->getBlockHash()?></td>
        </tr>
     <?php endforeach; ?>

@@ -17,6 +17,7 @@
             <ul class="nav navbar-nav">
                 <li><a href="./blocks.php">All Blocks</a></li>
                 <li><a href="./transactions.php">Transactions</a></li>
+                <li><a href="./history.php">Address Info</a></li>
             </ul>
         </div>
     </nav>

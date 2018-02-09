@@ -34,7 +34,11 @@ class BlockDTO
             }
         }
     }
-
+    public function getFormattedDateCreated()
+    {
+        $date = strtotime($this->getDateCreated());
+        return date('d/m/Y H:i:s', $date);
+    }
     public function getTransactionsCount(): int
     {
         return count($this->transactions);

@@ -44,6 +44,7 @@ class BlockHttpHandler extends HttpHandlerAbstract
             $error = "The Node server is currently offline. Please check again later.";
             $this->render("errors/error", $error);
         } else {
+            $blocks = array_reverse($blocks);
             $this->render("blocks/all", $blocks);
         }
     }
