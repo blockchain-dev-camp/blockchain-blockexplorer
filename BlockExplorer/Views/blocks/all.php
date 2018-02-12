@@ -12,6 +12,8 @@ use BlockExplorer\DTO\BlockDTO;
             <th>Transactions Count</th>
             <th>Created Date</th>
             <th>Block Hash</th>
+            <th>Nonce</th>
+            <th>Difficulty</th>
         </tr>
         </thead>
         <tbody>
@@ -22,6 +24,8 @@ use BlockExplorer\DTO\BlockDTO;
                <td><a href="./transactions.php?blockId=<?=$block->getIndex()?>"><?=$block->getTransactionsCount()?></a> txs</td>
                <td><?=$block->getFormattedDateCreated()?></td>
                <td><a href="./blocks.php?hash=<?=$block->getBlockHash()?>"><?=$block->getBlockHash()?></a></td>
+               <td><?=$block->getNonce()?></td>
+               <td><?=$block->getDifficulty()?></td>
            </tr>
         <?php endforeach; ?>
         </tbody>

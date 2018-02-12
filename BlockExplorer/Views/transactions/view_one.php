@@ -16,10 +16,10 @@
         </tr>
         <tr>
             <th>Value</th>
-            <td><?=$data->getValue()?></td>
+            <td><?=$data->getValue()?> coins</td>
         </tr>
         <tr>
-            <th>Transaction Hashy</th>
+            <th>Transaction Hash</th>
             <td><?=$data->getTransactionHash()?></td>
         </tr>
         <tr>

@@ -24,7 +24,7 @@
         <tr style="color: snow; background-color: <?= $transaction->isReceiver() ? "green" : "red" ?> ">
             <td><a style="color: snow" href="./history.php?hash=<?=$transaction->getFromAddress()?>"><?=$transaction->getFromAddress()?></a></td>
             <td><a style="color: snow" href="./history.php?hash=<?=$transaction->getToAddress()?>"><?=$transaction->getToAddress()?></a></td>
-            <td><?=$transaction->getValue()?></td>
+            <td><?=$transaction->getValue()?> coins</td>
             <td><a style="color: snow" href="./transactions.php?transHash=<?=$transaction->getTransactionHash()?>"><?=$transaction->getTransactionHash()?></a></td>
             <td><?=$transaction->getFormattedDateReceived()?></td>
             <td><?=$transaction->getPaidStatus()?></td>

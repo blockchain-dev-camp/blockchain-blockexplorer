@@ -25,5 +25,13 @@
             <th>Creation Date</th>
             <td><?=$data->getFormattedDateCreated()?></td>
         </tr>
+        <tr>
+            <th>Nonce</th>
+            <td><?=$data->getNonce()?></td>
+        </tr>
+        <tr>
+            <th>Difficulty</th>
+            <td><?=$data->getDifficulty()?></td>
+        </tr>
     </table>
 </div>

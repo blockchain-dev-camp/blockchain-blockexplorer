@@ -16,7 +16,7 @@ class BlockDTO
     private $difficulty;
     private $prevBlockHash;
     private $minedBy;
-    private $nonce;
+    private $nounce;
     private $dateCreated;
     private $blockHash;
 
@@ -89,7 +89,7 @@ class BlockDTO
      */
     public function getNonce()
     {
-        return $this->nonce;
+        return $this->nounce;
     }
 
     /**
