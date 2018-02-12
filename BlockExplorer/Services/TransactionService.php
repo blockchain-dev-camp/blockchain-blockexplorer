@@ -53,12 +53,9 @@ class TransactionService extends ServiceAbstract implements TransactionServiceIn
             foreach ($block->getTransactions() as $transaction)
             {
                 if ($transaction->getTransactionHash() === $transHash) {
-                    $transactionDTO = $transaction;
+                    return $transaction;
                 }
             }
-        }
-        if (isset($transactionDTO)){
-              return $transactionDTO;
         }
 
         return null;

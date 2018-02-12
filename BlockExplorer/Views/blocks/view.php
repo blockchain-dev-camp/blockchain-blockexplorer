@@ -11,7 +11,7 @@
         </tr>
         <tr>
             <th>Previous Block Hash</th>
-            <td><?=$data->getPrevBlockHash()?></td>
+            <td><a href="./blocks.php?hash=<?=$data->getPrevBlockHash()?>"><?=$data->getPrevBlockHash()?></a></td>
         </tr>
         <tr>
             <th>Mined By</th>

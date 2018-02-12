@@ -18,4 +18,6 @@ interface BlockServiceInterface
 
     public function getBlockByIndex(int $index): ?BlockDTO;
 
+    public function getBlockByHash(string $blockHash): ?BlockDTO;
+
 }

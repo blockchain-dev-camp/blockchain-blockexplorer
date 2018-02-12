@@ -42,4 +42,22 @@ class BlockService extends ServiceAbstract implements BlockServiceInterface
        $block = new BlockDTO(json_decode($rawData));
        return $block;
     }
+    public function getBlockByHash(string $blockHash): ?BlockDTO
+    {
+       $blocks = $this->getBlocksData();
+
+        /**
+         * @var BlockDTO[] $blocks
+         */
+       foreach ($blocks as $block) {
+           if ($block->getBlockHash() === $blockHash)
+           {
+               return $block;
+
+           }
+       }
+
+       return null;
+    }
+
 }

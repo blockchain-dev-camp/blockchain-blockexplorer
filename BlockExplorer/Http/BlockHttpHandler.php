@@ -31,6 +31,8 @@ class BlockHttpHandler extends HttpHandlerAbstract
     {
        if (isset($getRequest['id'])) {
            $this->viewBlock(intval(htmlspecialchars($getRequest['id'])));
+       } elseif (isset($getRequest['hash'])) {
+           $this->viewByHash(htmlspecialchars($getRequest['hash']));
        } else {
            $this->viewAllBlocks();
        }
@@ -54,6 +56,17 @@ class BlockHttpHandler extends HttpHandlerAbstract
         $block = $this->blockService->getBlockByIndex($index);
         if (null === $block) {
             $error = "There isn't a block with " . $index . " index. Please try again.";
+            $this->render("errors/error", $error);
+        } else {
+            $this->render('blocks/view', $block);
+        }
+    }
+
+    private function viewByHash(string $blockHash): void
+    {
+        $block = $this->blockService->getBlockByHash($blockHash);
+        if (null === $block) {
+            $error = "There isn't a block with " . $blockHash . " hash. Please try again.";
             $this->render("errors/error", $error);
         } else {
             $this->render('blocks/view', $block);

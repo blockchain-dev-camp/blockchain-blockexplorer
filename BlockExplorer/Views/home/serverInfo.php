@@ -17,16 +17,8 @@
         <td><?=$data->getBlocks()?></td>
     </tr>
     <tr>
-        <th>Confirmed Transactions</th>
-        <td><?=$data->getConfirmedTransactions()?></td>
-    </tr>
-    <tr>
         <th>Pending Transactions</th>
         <td><?=$data->getPendingTransactions()?></td>
-    </tr>
-    <tr>
-        <th>Addresses</th>
-        <td><?=$data->getAddresses()?></td>
     </tr>
     <tr>
         <th>Coins</th>
