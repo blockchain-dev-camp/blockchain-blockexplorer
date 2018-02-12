@@ -22,11 +22,11 @@
     <tbody>
     <?php foreach ($data->getTransactionsHistory() as $transaction): ?>
         <tr style="color: snow; background-color: <?= $transaction->isReceiver() ? "green" : "red" ?> ">
-            <td><a style="color: snow" href="./history.php?hash=<?=$transaction->getFrom()?>"><?=$transaction->getFrom()?></a></td>
-            <td><a style="color: snow" href="./history.php?hash=<?=$transaction->getTo()?>"><?=$transaction->getTo()?></a></td>
+            <td><a style="color: snow" href="./history.php?hash=<?=$transaction->getFromAddress()?>"><?=$transaction->getFromAddress()?></a></td>
+            <td><a style="color: snow" href="./history.php?hash=<?=$transaction->getToAddress()?>"><?=$transaction->getToAddress()?></a></td>
             <td><?=$transaction->getValue()?></td>
             <td><a style="color: snow" href="./transactions.php?transHash=<?=$transaction->getTransactionHash()?>"><?=$transaction->getTransactionHash()?></a></td>
-            <td><?=$transaction->getFormatteddateReceived()?></td>
+            <td><?=$transaction->getFormattedDateReceived()?></td>
             <td><?=$transaction->getPaidStatus()?></td>
         </tr>
     <?php endforeach; ?>

@@ -39,13 +39,13 @@ class AddressService extends ServiceAbstract implements AddressServiceInterface
                 /**
                  * @var TransactionDTO $transaction
                  */
-                if ($addressHash === $transaction->getTo()){
+                if ($addressHash === $transaction->getToAddress()){
                     $transaction->setIsReceiver();
                     if ($transaction->getPaid()){
                      $addressInfoDTO->increaseBalance($transaction->getValue());
                     }
                     $addressInfoDTO->addTransactionToHistory($transaction);
-                } else if ($addressHash === $transaction->getFrom()) {
+                } else if ($addressHash === $transaction->getFromAddress()) {
                     if ($transaction->getPaid()){
                         $addressInfoDTO->decreaseBalance($transaction->getValue());
                     }
@@ -53,6 +53,7 @@ class AddressService extends ServiceAbstract implements AddressServiceInterface
                 }
             }
         }
+        $addressInfoDTO->sortTransactionsByDate();
         return $addressInfoDTO;
 
     }

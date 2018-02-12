@@ -9,14 +9,16 @@
 namespace BlockExplorer\DTO;
 
 
+use DateTime;
+
 class TransactionDTO
 {
-    private $from;
-    private $to;
+    private $fromAddress;
+    private $toAddress;
     private $value;
     private $senderPubKey;
     private $senderSignature;
-    private $transactionHash;
+    private $transactionId;
     private $paid;
     private $dateReceived;
     private $minedInBlockIndex;
@@ -51,23 +53,24 @@ class TransactionDTO
     }
     public function getFormattedDateReceived()
     {
-        $date = strtotime($this->getDateReceived());
+       // $date = strtotime($this->getDateReceived());
+        $date = $this->dateReceived / 1000;
         return date('d/m/Y H:i:s', $date);
     }
     /**
      * @return mixed
      */
-    public function getFrom()
+    public function getFromAddress()
     {
-        return $this->from;
+        return $this->fromAddress;
     }
 
     /**
      * @return mixed
      */
-    public function getTo()
+    public function getToAddress()
     {
-        return $this->to;
+        return $this->toAddress;
     }
 
     /**
@@ -99,7 +102,7 @@ class TransactionDTO
      */
     public function getTransactionHash()
     {
-        return $this->transactionHash;
+        return $this->transactionId;
     }
 
     /**

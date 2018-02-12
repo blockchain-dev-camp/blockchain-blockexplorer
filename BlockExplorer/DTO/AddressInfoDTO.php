@@ -23,12 +23,12 @@ class AddressInfoDTO
         $this->addressHash = $addressHash;
     }
 
-    public function increaseBalance(int $amount): void
+    public function increaseBalance(float $amount): void
     {
         $this->balance += $amount;
     }
 
-    public function decreaseBalance(int $amount): void
+    public function decreaseBalance(float $amount): void
     {
         $this->balance -= $amount;
     }
@@ -58,5 +58,16 @@ class AddressInfoDTO
         return $this->addressHash;
     }
 
+
+    public function sortTransactionsByDate(): void
+    {
+       usort($this->transactionsHistory, array($this, "sorting"));
+
+    }
+
+    private  function sorting($a , $b)
+    {
+        return $a->getFormattedDateReceived() < $b->getFormattedDateReceived();
+    }
 
 }

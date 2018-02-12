@@ -14,7 +14,7 @@ class ServerInfoDTO
     private $name;
     private $peers;
     private $blocks;
-    private $confimedTransactions;
+    private $confirmedTransactions;
     private $pendingTransactions;
     private $addresses;
     private $coins;
@@ -63,9 +63,9 @@ class ServerInfoDTO
     /**
      * @return mixed
      */
-    public function getConfimedTransactions()
+    public function getConfirmedTransactions()
     {
-        return $this->confimedTransactions;
+        return $this->confirmedTransactions;
     }
 
     /**

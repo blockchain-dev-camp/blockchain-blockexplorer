@@ -18,8 +18,8 @@
         <tbody>
         <?php foreach ($data->getTransactions() as $transaction): ?>
             <tr>
-                <td><?=$transaction->getFrom()?></td>
-                <td><?=$transaction->getTo()?></td>
+                <td><?=$transaction->getFromAddress()?></td>
+                <td><?=$transaction->getToAddress()?></td>
                 <td><?=$transaction->getValue()?></td>
                 <td><a href="./transactions.php?transHash=<?=$transaction->getTransactionHash()?>"><?=$transaction->getTransactionHash()?></a></td>
                 <td><?=$transaction->getFormatteddateReceived()?></td>

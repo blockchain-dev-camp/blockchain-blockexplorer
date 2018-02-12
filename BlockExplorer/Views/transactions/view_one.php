@@ -8,11 +8,11 @@
     <table class="table-bordered table" align="center">
         <tr>
             <th>From</th>
-            <td><?=$data->getFrom()?></td>
+            <td><?=$data->getFromAddress()?></td>
         </tr>
         <tr>
             <th>To</th>
-            <td><?=$data->getTo()?> txs</td>
+            <td><?=$data->getToAddress()?> txs</td>
         </tr>
         <tr>
             <th>Value</th>

@@ -18,7 +18,7 @@
     </tr>
     <tr>
         <th>Confirmed Transactions</th>
-        <td><?=$data->getConfimedTransactions()?></td>
+        <td><?=$data->getConfirmedTransactions()?></td>
     </tr>
     <tr>
         <th>Pending Transactions</th>
