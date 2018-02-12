@@ -61,11 +61,11 @@ class AddressInfoDTO
 
     public function sortTransactionsByDate(): void
     {
-       usort($this->transactionsHistory, array($this, "sorting"));
+       usort($this->transactionsHistory, array($this, "sortingTransactionsFunction"));
 
     }
 
-    private  function sorting($a , $b)
+    private  function sortingTransactionsFunction($a , $b)
     {
         return $a->getFormattedDateReceived() < $b->getFormattedDateReceived();
     }

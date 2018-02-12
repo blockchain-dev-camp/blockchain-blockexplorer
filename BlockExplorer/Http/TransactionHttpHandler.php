@@ -29,13 +29,13 @@ class TransactionHttpHandler extends HttpHandlerAbstract
     public function view(array $getRequest): void
     {
         if (isset($getRequest['blockId']))
-        {
-            $this->showAllByBlockId(intval(htmlspecialchars($getRequest['blockId'])));
+        {$this->showAllByBlockId(intval(htmlspecialchars($getRequest['blockId'])));
         } elseif (isset($getRequest['transHash'])) {
 
             $this->showTransactionByHash(htmlspecialchars($getRequest['transHash']));
         } else {
-            $this->render("transactions/search");
+
+            $this->showAllInSearch();
         }
     }
 
@@ -60,5 +60,11 @@ class TransactionHttpHandler extends HttpHandlerAbstract
         } else {
             $this->render("transactions/view_one", $transaction);
         }
+    }
+
+    private function showAllInSearch(): void
+    {
+        $transactions = $this->transactionService->viewAllTransactions();
+        $this->render("transactions/search", $transactions);
     }
 }

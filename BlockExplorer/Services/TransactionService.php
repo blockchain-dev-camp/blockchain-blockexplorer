@@ -15,10 +15,15 @@ use Core\DataGathererInterface;
 
 class TransactionService extends ServiceAbstract implements TransactionServiceInterface
 {
-
-    public function __construct(DataGathererInterface $dataGatherer)
+    /**
+     * @var BlockServiceInterface
+     */
+    private $blockService;
+    public function __construct(DataGathererInterface $dataGatherer,
+                                BlockServiceInterface $blockService)
     {
         parent::__construct($dataGatherer);
+        $this->blockService = $blockService;
     }
 
     public function viewAllInBlockIndex(int $index): ?BlockDTO
@@ -28,16 +33,64 @@ class TransactionService extends ServiceAbstract implements TransactionServiceIn
             return null;
         }
         $block = new BlockDTO(json_decode($rawData));
+        $block->sortTransactionsByDate();
         return $block;
     }
 
     public function viewSingleTransactionByHash(string $transHash): ?TransactionDTO
     {
-        $rawData = $this->dataGatherer->getRawData("/transaction/" . $transHash . "info");
-        if (null === $rawData){
-            return null;
+
+        $blocks = $this->blockService->getBlocksData();
+
+        /**
+         * @var BlockDTO[] $blocks
+         */
+        foreach ($blocks as $block)
+        {
+            /**
+             * @var TransactionDTO $transaction
+             */
+            foreach ($block->getTransactions() as $transaction)
+            {
+                if ($transaction->getTransactionHash() === $transHash) {
+                    $transactionDTO = $transaction;
+                }
+            }
         }
-        $transactionDTO = new TransactionDTO(json_decode($rawData));
-        return $transactionDTO;
+        if (isset($transactionDTO)){
+              return $transactionDTO;
+        }
+
+        return null;
+    }
+
+    public function viewAllTransactions(): array
+    {
+        $transactions = [];
+        $blocks = $this->blockService->getBlocksData();
+
+        /**
+         * @var BlockDTO[] $blocks
+         */
+        foreach ($blocks as $block)
+        {
+            /**
+             * @var TransactionDTO $transaction
+             */
+            foreach ($block->getTransactions() as $transaction)
+            {
+                $transactions[] = $transaction;
+            }
+        }
+
+        usort($transactions, array($this, "sortingTransactionsByDate"));
+
+        return $transactions;
+
+    }
+
+    private  function sortingTransactionsByDate($a , $b)
+    {
+        return $a->getFormattedDateReceived() < $b->getFormattedDateReceived();
     }
 }

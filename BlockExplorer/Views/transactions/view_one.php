@@ -8,11 +8,11 @@
     <table class="table-bordered table" align="center">
         <tr>
             <th>From</th>
-            <td><?=$data->getFromAddress()?></td>
+            <td><a href="./history.php?hash=<?=$data->getFromAddress()?>"><?=$data->getFromAddress()?></a></td>
         </tr>
         <tr>
             <th>To</th>
-            <td><?=$data->getToAddress()?> txs</td>
+            <td><a href="./history.php?hash=<?=$data->getToAddress()?>"><?=$data->getToAddress()?></a></td>
         </tr>
         <tr>
             <th>Value</th>

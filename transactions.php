@@ -7,6 +7,7 @@
  */
 
 require_once ('autoload.php');
-$transactionService = new \BlockExplorer\Services\TransactionService($dataGatherer);
+$blockService = new \BlockExplorer\Services\BlockService($dataGatherer);
+$transactionService = new \BlockExplorer\Services\TransactionService($dataGatherer, $blockService);
 $transactionHandler = new \BlockExplorer\Http\TransactionHttpHandler($template, $transactionService);
 $transactionHandler->view($_GET);

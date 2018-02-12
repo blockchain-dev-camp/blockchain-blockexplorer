@@ -16,6 +16,9 @@ use Core\DataGathererInterface;
 
 class AddressService extends ServiceAbstract implements AddressServiceInterface
 {
+    /**
+     * @var BlockServiceInterface
+     */
     private $blockService;
 
     public function __construct(DataGathererInterface $dataGatherer,

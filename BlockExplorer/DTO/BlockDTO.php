@@ -107,6 +107,16 @@ class BlockDTO
     {
         return $this->blockHash;
     }
+    public function sortTransactionsByDate(): void
+    {
+        usort($this->transactions, array($this, "sortingTransactionsFunction"));
+
+    }
+
+    private  function sortingTransactionsFunction($a , $b)
+    {
+        return $a->getFormattedDateReceived() < $b->getFormattedDateReceived();
+    }
 
 
 
